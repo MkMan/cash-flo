@@ -1,7 +1,8 @@
-import { createSignal } from "solid-js";
-import logo from "./assets/logo.svg";
 import { invoke } from "@tauri-apps/api/tauri";
+import { createSignal } from "solid-js";
+
 import "./App.css";
+import logo from "./assets/logo.svg";
 
 function App() {
   const [greetMsg, setGreetMsg] = createSignal("");
@@ -18,13 +19,13 @@ function App() {
 
       <div class="row">
         <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" class="logo vite" alt="Vite logo" />
+          <img alt="Vite logo" class="logo vite" src="/vite.svg" />
         </a>
         <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" class="logo tauri" alt="Tauri logo" />
+          <img alt="Tauri logo" class="logo tauri" src="/tauri.svg" />
         </a>
         <a href="https://solidjs.com" target="_blank">
-          <img src={logo} class="logo solid" alt="Solid logo" />
+          <img alt="Solid logo" class="logo solid" src={logo} />
         </a>
       </div>
 
@@ -34,7 +35,7 @@ function App() {
         class="row"
         onSubmit={(e) => {
           e.preventDefault();
-          greet();
+          void greet();
         }}
       >
         <input
