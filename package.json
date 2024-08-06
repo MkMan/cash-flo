@@ -11,7 +11,7 @@
     "lint:check": "eslint --report-unused-disable-directives ./src && markdownlint .",
     "lint:fix": "eslint ./src --fix && markdownlint . --fix",
     "serve": "vite preview",
-    "start": "vite",
+    "start": "tauri dev",
     "tauri": "tauri",
     "prepare": "husky"
   },
