@@ -19,6 +19,9 @@ export default [
         tsconfigRootDir: import.meta.dirname,
       },
     },
+    rules: {
+      "@typescript-eslint/explicit-function-return-type": "error",
+    },
   },
   {
     files: ["**/*.js"],

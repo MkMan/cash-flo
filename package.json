@@ -11,14 +11,16 @@
     "lint:check": "eslint --report-unused-disable-directives ./src && markdownlint .",
     "lint:fix": "eslint ./src --fix && markdownlint . --fix",
     "serve": "vite preview",
-    "start": "vite",
+    "start": "tauri dev",
     "tauri": "tauri",
     "prepare": "husky"
   },
   "license": "MIT",
   "dependencies": {
+    "@solidjs/router": "^0.14.1",
     "@tauri-apps/api": "^1",
-    "solid-js": "^1.7.8"
+    "solid-js": "^1.7.8",
+    "tauri-plugin-store-api": "github:tauri-apps/tauri-plugin-store#v1"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
@@ -38,6 +40,7 @@
     "typescript": "^5.2.2",
     "typescript-eslint": "^8.0.0",
     "vite": "^5.3.1",
-    "vite-plugin-solid": "^2.8.0"
+    "vite-plugin-solid": "^2.8.0",
+    "vite-tsconfig-paths": "^5.0.1"
   }
 }
