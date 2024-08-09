@@ -1,11 +1,11 @@
-import { Component, createSignal, For, Show } from "solid-js";
+import { Component, For, Show } from "solid-js";
 
 import { userSettingsStore } from "../../../state";
 import { createProfile, onProfileDeleteClick } from "./utils";
 
 const fieldName = "profileName";
 
-const [profileName, setProfileName] = createSignal<string>("");
+let profileNameInput: HTMLInputElement;
 
 const ProfilesPage: Component = () => (
   <section>
@@ -43,24 +43,16 @@ const ProfilesPage: Component = () => (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        const value = profileName();
+        const { value } = profileNameInput;
 
         if (!value) return;
 
         createProfile(value);
-        setProfileName(""); // Reset the input
+        profileNameInput.value = "";
       }}
     >
       <label for={fieldName}>Profile name</label>
-      <input
-        id={fieldName}
-        name={fieldName}
-        onChange={({ target }) => {
-          setProfileName(target.value);
-        }}
-        type="text"
-        value={profileName()}
-      />
+      <input name={fieldName} ref={profileNameInput} type="text" />
       <button type="submit">Create</button>
     </form>
   </section>
