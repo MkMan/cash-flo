@@ -1,6 +1,5 @@
+import { Profile } from "$app-state";
 import { Component, For, Show } from "solid-js";
-
-import { Profile } from "../../../../state";
 
 type CurrentProfilesProps = {
   onProfileDelete: (profile: Profile) => void;

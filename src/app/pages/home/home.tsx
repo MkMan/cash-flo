@@ -1,6 +1,6 @@
+import { userSettingsStore } from "$app-state";
 import { Component } from "solid-js";
 
-import { userSettingsStore } from "../../../state";
 import { CreateProfile } from "./create-profile/create-profile";
 import { CurrentProfiles } from "./current-profiles/current-profiles";
 import { createProfile, onProfileDelete } from "./utils";
