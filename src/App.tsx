@@ -1,18 +1,17 @@
-import { Component, createEffect } from "solid-js";
+import { Component, createEffect, JSX } from "solid-js";
 
-import { CreateProfile } from "./app/profiles/create-profile/create-profile";
 import { initialiseUserSettings } from "./state";
 
-const App: Component = () => {
+const App: Component<{ children?: JSX.Element }> = (props) => {
   createEffect(() => {
     initialiseUserSettings();
   });
 
   return (
-    <div>
-      <h1>Welcome to Tauri!</h1>
-      <CreateProfile />
-    </div>
+    <>
+      <h1>CashFlo</h1>
+      {props.children}
+    </>
   );
 };
 
