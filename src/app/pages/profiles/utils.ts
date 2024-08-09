@@ -27,7 +27,7 @@ const deleteProfile = (profileId: string): void => {
   setUserSettingsStore("profiles", newProfiles);
 };
 
-const onProfileDeleteClick = ({ id, name }: Profile): void => {
+const onProfileDelete = ({ id, name }: Profile): void => {
   confirmProfileDeletion(name)
     .then((shouldDelete) => {
       if (shouldDelete) deleteProfile(id);
@@ -37,4 +37,4 @@ const onProfileDeleteClick = ({ id, name }: Profile): void => {
     });
 };
 
-export { createProfile, onProfileDeleteClick };
+export { createProfile, onProfileDelete };
