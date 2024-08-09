@@ -5,7 +5,7 @@ import { CreateProfile } from "./create-profile/create-profile";
 import { CurrentProfiles } from "./current-profiles/current-profiles";
 import { createProfile, onProfileDelete } from "./utils";
 
-const ProfilesPage: Component = () => (
+const HomePage: Component = () => (
   <section>
     <h2>Profiles</h2>
     <p>
@@ -21,4 +21,4 @@ const ProfilesPage: Component = () => (
   </section>
 );
 
-export { ProfilesPage };
+export { HomePage };
