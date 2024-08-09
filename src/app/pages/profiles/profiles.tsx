@@ -11,7 +11,7 @@ const fieldName = "profileName";
 
 const [profileName, setProfileName] = createSignal<string>("");
 
-const CreateProfile: Component = () => (
+const ProfilesPage: Component = () => (
   <div>
     <ul>
       <For each={userSettingsStore.profiles}>
@@ -76,4 +76,4 @@ const CreateProfile: Component = () => (
   </div>
 );
 
-export { CreateProfile };
+export { ProfilesPage };
