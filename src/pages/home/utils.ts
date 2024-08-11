@@ -1,10 +1,5 @@
 import { confirm } from "@tauri-apps/api/dialog";
-
-import {
-  Profile,
-  setUserSettingsStore,
-  userSettingsStore,
-} from "../../../state";
+import { Profile, setUserSettingsStore, userSettingsStore } from "$app-state";
 
 const createProfile = (profileName: string): void => {
   setUserSettingsStore("profiles", (currentProfiles) => [

@@ -3,7 +3,7 @@ import { Route, Router } from "@solidjs/router";
 import { render } from "solid-js/web";
 
 import { App } from "./App";
-import { HomePage } from "./app/pages";
+import { HomePage } from "./pages";
 
 render(
   () => (
