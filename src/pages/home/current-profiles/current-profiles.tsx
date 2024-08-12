@@ -1,5 +1,8 @@
+import { A } from "@solidjs/router";
 import { Profile } from "$app-state";
 import { Component, For, Show } from "solid-js";
+
+import { getHrefTo } from "../../../utils";
 
 type CurrentProfilesProps = {
   onProfileDelete: (profile: Profile) => void;
@@ -24,7 +27,8 @@ const CurrentProfiles: Component<CurrentProfilesProps> = (props) => (
                 }}
               >
                 Delete
-              </button>
+              </button>{" "}
+              <A href={getHrefTo("profile", profile.id)}>Visit</A>
             </li>
           )}
         </For>
