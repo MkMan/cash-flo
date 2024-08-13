@@ -8,6 +8,7 @@ import { UserSettings } from "./types";
 const store = new Store(storeFileName);
 
 const getInitialAppStoreValue = async (): Promise<UserSettings> => ({
+  accounts: (await store.get("accounts")) ?? [],
   profiles: (await store.get("profiles")) ?? [],
 });
 
@@ -17,10 +18,8 @@ const [userSettingsStore, setUserSettingsStore] = createStore<UserSettings>(
 
 const initialiseUserSettings = (): void => {
   createEffect(() => {
-    store.set("profiles", userSettingsStore.profiles).then(
-      () => {},
-      () => {},
-    );
+    void store.set("accounts", userSettingsStore.accounts);
+    void store.set("profiles", userSettingsStore.profiles);
   });
 };
 

@@ -25,7 +25,7 @@ const CreateProfile: Component<CreateProfileProps> = (props) => {
         }}
       >
         <label for={fieldName}>Profile name</label>
-        <input name={fieldName} ref={profileNameInput} type="text" />
+        <input id={fieldName} ref={profileNameInput} type="text" />
         <button type="submit">Create</button>
       </form>
     </>

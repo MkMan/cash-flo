@@ -1,16 +1,11 @@
 import { confirm } from "@tauri-apps/api/dialog";
-
-import {
-  Profile,
-  setUserSettingsStore,
-  userSettingsStore,
-} from "../../../state";
+import { Profile, setUserSettingsStore, userSettingsStore } from "$app-state";
 
 const createProfile = (profileName: string): void => {
-  setUserSettingsStore("profiles", (currentProfiles) => [
-    ...currentProfiles,
-    { id: globalThis.crypto.randomUUID(), name: profileName },
-  ]);
+  setUserSettingsStore("profiles", userSettingsStore.profiles.length, {
+    id: globalThis.crypto.randomUUID(),
+    name: profileName,
+  });
 };
 
 const confirmProfileDeletion = (profileName: string): Promise<boolean> =>

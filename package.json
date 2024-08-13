@@ -5,13 +5,13 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "dev": "vite",
     "format:check": "prettier -c .",
     "format:fix": "prettier -w .",
     "lint:check": "eslint --report-unused-disable-directives ./src && markdownlint .",
     "lint:fix": "eslint ./src --fix && markdownlint . --fix",
     "serve": "vite preview",
     "start": "tauri dev",
+    "start-ui": "vite",
     "tauri": "tauri",
     "prepare": "husky"
   },
