@@ -1,8 +1,7 @@
 import { A } from "@solidjs/router";
 import { Profile } from "$app-state";
+import { getHrefTo } from "$app-utils";
 import { Component, For, Show } from "solid-js";
-
-import { getHrefTo } from "../../../utils";
 
 type CurrentProfilesProps = {
   onProfileDelete: (profile: Profile) => void;

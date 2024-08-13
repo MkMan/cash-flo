@@ -1,8 +1,10 @@
 const profileIdParameter = "profileId";
+const accountIdParameter = "accountId";
 
-type Route = "home" | "profile";
+type Route = "account" | "home" | "profile";
 
 const routePathsMap: Record<Route, string> = {
+  account: `/account/:${accountIdParameter}`,
   home: "/",
   profile: `/profile/:${profileIdParameter}`,
 };

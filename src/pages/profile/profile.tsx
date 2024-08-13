@@ -1,5 +1,6 @@
-import { useParams } from "@solidjs/router";
+import { A, useParams } from "@solidjs/router";
 import { userSettingsStore } from "$app-state";
+import { getHrefTo } from "$app-utils";
 import { Component, createMemo, For, Show } from "solid-js";
 
 import { AddAccount } from "./add-account/add-account";
@@ -28,7 +29,13 @@ const ProfilePage: Component = () => {
         when={accountsForProfile().length > 0}
       >
         <ul>
-          <For each={accountsForProfile()}>{({ name }) => <li>{name}</li>}</For>
+          <For each={accountsForProfile()}>
+            {({ id, name }) => (
+              <li>
+                {name} <A href={getHrefTo("account", id)}>Visit</A>
+              </li>
+            )}
+          </For>
         </ul>
       </Show>
       <AddAccount
