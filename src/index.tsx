@@ -4,7 +4,12 @@ import { routePathsMap } from "$app-utils";
 import { render } from "solid-js/web";
 
 import { App } from "./App";
+import { migrate } from "./db/migrate";
 import { AccountPage, HomePage, ProfilePage } from "./pages";
+
+await migrate().catch((error: unknown) => {
+  console.error(error);
+});
 
 render(
   () => (
