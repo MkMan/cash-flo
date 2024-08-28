@@ -25,7 +25,6 @@
     "strictPropertyInitialization": true,
 
     "paths": {
-      "$app-state": ["./src/state"],
       "$app-utils": ["./src/utils"],
       "$app-db": ["./src/db"]
     }

@@ -7,9 +7,6 @@ type Migration = { created_at: number; hash: string; id: number };
 
 /**
  * Executes database migrations.
- *
- * @param db The database instance.
- * @returns A promise that resolves when the migrations are complete.
  */
 const migrate = async (): Promise<void> => {
   const resourcePath = await resourceDir();
@@ -66,4 +63,4 @@ const migrate = async (): Promise<void> => {
   return Promise.resolve();
 };
 
-export { migrate };
+export { migrate as applyDatabaseMigrations };

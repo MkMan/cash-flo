@@ -17,7 +17,7 @@ const AccountPage: Component = () => {
       .execute()
       .then((account) => {
         if (!account) {
-          throw new Error(`Profile not found for id ${accountId.toString()}`);
+          throw new Error(`Account not found for id ${accountId.toString()}`);
         }
         return account;
       }),
