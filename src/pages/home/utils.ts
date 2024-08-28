@@ -1,11 +1,34 @@
-import { confirm } from "@tauri-apps/api/dialog";
-import { Profile, setUserSettingsStore, userSettingsStore } from "$app-state";
+import type { Profile } from "$app-db";
 
-const createProfile = (profileName: string): void => {
-  setUserSettingsStore("profiles", userSettingsStore.profiles.length, {
-    id: globalThis.crypto.randomUUID(),
-    name: profileName,
-  });
+import { confirm } from "@tauri-apps/api/dialog";
+import { db, schema } from "$app-db";
+import { eq } from "drizzle-orm";
+import { createResource } from "solid-js";
+
+const [profilesResource, { refetch }] = createResource<Profile[]>(
+  () =>
+    db.query.profile
+      .findMany()
+      .execute()
+      .then((profiles) => profiles)
+      .catch((error: unknown) => {
+        console.error("Error fetching profiles", error);
+        return [];
+      }),
+  { initialValue: [] },
+);
+
+const createProfile = (name: string): void => {
+  db.insert(schema.profile)
+    .values({ name })
+    .then(() => {
+      console.log("Profile created successfully");
+    })
+    .catch(() => {
+      console.error("Error adding profile");
+    });
+
+  void refetch();
 };
 
 const confirmProfileDeletion = (profileName: string): Promise<boolean> =>
@@ -14,22 +37,27 @@ const confirmProfileDeletion = (profileName: string): Promise<boolean> =>
     type: "warning",
   });
 
-const deleteProfile = (profileId: string): void => {
-  const newProfiles = userSettingsStore.profiles.filter(
-    ({ id }) => id !== profileId,
-  );
-
-  setUserSettingsStore("profiles", newProfiles);
+const removeProfileFromDb = (profileId: number): void => {
+  db.delete(schema.profile)
+    .where(eq(schema.profile.id, profileId))
+    .execute()
+    .then(refetch)
+    .catch((error: unknown) => {
+      console.error(
+        `Error deleting profile with id ${profileId.toString()}`,
+        error,
+      );
+    });
 };
 
 const onProfileDelete = ({ id, name }: Profile): void => {
   confirmProfileDeletion(name)
     .then((shouldDelete) => {
-      if (shouldDelete) deleteProfile(id);
+      if (shouldDelete) removeProfileFromDb(id);
     })
     .catch((error: unknown) => {
-      console.error(`Error deleting profile ${id}:${name}`, error);
+      console.error(`Error deleting profile ${id.toString()}:${name}`, error);
     });
 };
 
-export { createProfile, onProfileDelete };
+export { createProfile, onProfileDelete, profilesResource };
