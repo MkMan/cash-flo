@@ -22,8 +22,7 @@
     "@tauri-apps/api": "^1",
     "drizzle-orm": "^0.33.0",
     "solid-js": "^1.7.8",
-    "tauri-plugin-sql-api": "github:tauri-apps/tauri-plugin-sql#v1",
-    "tauri-plugin-store-api": "github:tauri-apps/tauri-plugin-store#v1"
+    "tauri-plugin-sql-api": "github:tauri-apps/tauri-plugin-sql#v1"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
