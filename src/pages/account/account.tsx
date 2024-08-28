@@ -1,19 +1,31 @@
+import type { Account } from "$app-db";
+import type { Component } from "solid-js";
+
 import { useParams } from "@solidjs/router";
-import { userSettingsStore } from "$app-state";
-import { Component } from "solid-js";
+import { db } from "$app-db";
+import { createResource } from "solid-js";
 
 const AccountPage: Component = () => {
-  const { accountId } = useParams();
+  const { accountId: accountIdParam } = useParams();
+  const accountId = parseInt(accountIdParam);
 
-  const account = userSettingsStore.accounts.find(({ id }) => id === accountId);
-
-  if (!account) {
-    throw new Error(`Could not find account for id ${accountId}`);
-  }
+  const [accountResource] = createResource<Account>(() =>
+    db.query.account
+      .findFirst({
+        where: (account, { eq }) => eq(account.id, accountId),
+      })
+      .execute()
+      .then((account) => {
+        if (!account) {
+          throw new Error(`Account not found for id ${accountId.toString()}`);
+        }
+        return account;
+      }),
+  );
 
   return (
     <section>
-      <h2>{account.name}</h2>
+      <h2>{accountResource()?.name}</h2>
     </section>
   );
 };

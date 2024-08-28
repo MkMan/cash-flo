@@ -1,12 +1,6 @@
-import { Component, createEffect, JSX } from "solid-js";
-
-import { initialiseUserSettings } from "./state";
+import { Component, JSX } from "solid-js";
 
 const App: Component<{ children?: JSX.Element }> = (props) => {
-  createEffect(() => {
-    initialiseUserSettings();
-  });
-
   return (
     <>
       <h1>CashFlo</h1>

@@ -9,6 +9,7 @@
     "format:fix": "prettier -w .",
     "lint:check": "eslint --report-unused-disable-directives ./src && markdownlint .",
     "lint:fix": "eslint ./src --fix && markdownlint . --fix",
+    "migrate": "drizzle-kit generate",
     "serve": "vite preview",
     "start": "tauri dev",
     "start-ui": "vite",
@@ -19,14 +20,16 @@
   "dependencies": {
     "@solidjs/router": "^0.14.1",
     "@tauri-apps/api": "^1",
+    "drizzle-orm": "^0.33.0",
     "solid-js": "^1.7.8",
-    "tauri-plugin-store-api": "github:tauri-apps/tauri-plugin-store#v1"
+    "tauri-plugin-sql-api": "github:tauri-apps/tauri-plugin-sql#v1"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@eslint/js": "^9.8.0",
     "@tauri-apps/cli": "^1",
+    "drizzle-kit": "^0.24.0",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-perfectionist": "^3.1.0",

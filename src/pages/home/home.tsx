@@ -1,9 +1,8 @@
-import { userSettingsStore } from "$app-state";
 import { Component } from "solid-js";
 
 import { CreateProfile } from "./create-profile/create-profile";
 import { CurrentProfiles } from "./current-profiles/current-profiles";
-import { createProfile, onProfileDelete } from "./utils";
+import { createProfile, onProfileDelete, profilesResource } from "./utils";
 
 const HomePage: Component = () => (
   <section>
@@ -15,7 +14,7 @@ const HomePage: Component = () => (
     </p>
     <CurrentProfiles
       onProfileDelete={onProfileDelete}
-      profiles={userSettingsStore.profiles}
+      profiles={profilesResource()}
     />
     <CreateProfile onCreate={createProfile} />
   </section>
